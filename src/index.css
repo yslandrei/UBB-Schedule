@@ -10,9 +10,34 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+label {
+  font-size: 17px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+select {
+  border: 2px solid darkblue;
+  border-radius: 5px;
+  padding: 5px;
+  font: normal 13px/13px 'Poppins', 'Poppins';
+}
+
+.flex-container-selectors {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 20px 0px;
+}
+
+.flex-child-selector {
+  margin-left: 40px;
+}
+
 .flex-container {
   display: flex;
-  padding: 40px;
+  padding: 0px 40px;
 }
 
 .flex-child {
@@ -46,12 +71,11 @@ header {
   background: #000;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  margin: 5px;
+  padding: 7px 14px;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 13px;
   font-family: inherit;
 }
 

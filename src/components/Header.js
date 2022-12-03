@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 
 const Header = ({title}) => {
-
   return (
     <header>
       <h1 className="title">{title}</h1>

@@ -2,7 +2,7 @@ import Course from "./Course"
 
 const Courses = ({days}) => {
   return (
-    <>
+    <div className="flex-container">
       <div className="flex-child"> 
         <h2>Luni</h2>
         {days[0].map((course) => (
@@ -37,7 +37,7 @@ const Courses = ({days}) => {
           <Course key={course.id} course={course}/>  
         ))}
       </div>
-    </>
+    </div>
   )
 }
 

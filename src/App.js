@@ -1,5 +1,6 @@
 import Header from './components/Header'
 import Courses from './components/Courses'
+import Selectors from './components/Selectors'
 import {useState} from 'react'
 
 function App() {
@@ -137,9 +138,8 @@ function App() {
   return (
     <>
       <Header title="UBB Schedule"/>
-      <div className="flex-container">
-        <Courses days={[monday, tuesday, wednesday, thursday, friday]}/>
-      </div>
+      <Selectors/>
+      <Courses days={[monday, tuesday, wednesday, thursday, friday]}/>
     </>
   );
 }

@@ -2,7 +2,6 @@ import Header from './components/Header'
 import Courses from './components/Courses'
 import Selectors from './components/Selectors'
 import {useState, useEffect} from 'react'
-import axios from 'axios'
 
 function App() {
   const [table, setTable] = useState({
@@ -26,15 +25,6 @@ function App() {
         tip: "Seminar",
         disciplina: "Arhitectura sistemelor de calcul",
         prof: "Lect. SOTROPA Diana"
-      },
-      {
-        ora: "10-12",
-        frecventa: " ",
-        sala: "C510",
-        formatie: "211/2",
-        tip: "Laborator",
-        disciplina: "Arhitectura sistemelor de calcul",
-        prof: "Lect. VANCEA Alexandru"
       }
     ],
     Marti: [
@@ -93,15 +83,6 @@ function App() {
         tip: "Curs",
         disciplina: "Programare in C",
         prof: "Asist. BOTA Florentin"
-      },
-      {
-        ora: "16-18",
-        frecventa: " ",
-        sala: "L404",
-        formatie: "211/2",
-        tip: "Laborator",
-        disciplina: "Fundamentele programarii",
-        prof: "Lect. POP Andreea"
       },
       {
         ora: "18-20",

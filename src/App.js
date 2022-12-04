@@ -20,47 +20,47 @@ function App() {
     Luni: [
       {
         ora: "8-10",
-        frecventa: " ",
-        sala: "L308",
-        formatie: "213/1",
-        tip: "Laborator",
-        disciplina: "Fundamentele programarii",
-        prof: "C.d.asociat STANEAN Tudor"
-      },
-      {
-        ora: "10-12",
         frecventa: "sapt. 1",
-        sala: "A312",
-        formatie: "213",
+        sala: "A313",
+        formatie: "211",
         tip: "Seminar",
         disciplina: "Arhitectura sistemelor de calcul",
         prof: "Lect. SOTROPA Diana"
       },
       {
-        ora: "14-16",
+        ora: "10-12",
         frecventa: " ",
-        sala: "pi",
-        formatie: "213",
-        tip: "Seminar",
-        disciplina: "Analiza matematica",
-        prof: "Lect. BERINDE Stefan"
+        sala: "C510",
+        formatie: "211/2",
+        tip: "Laborator",
+        disciplina: "Arhitectura sistemelor de calcul",
+        prof: "Lect. VANCEA Alexandru"
       }
     ],
     Marti: [
       {
-        ora: "8-10",
+        ora: "10-12",
         frecventa: " ",
-        sala: "L339",
-        formatie: "213/2",
-        tip: "Laborator",
-        disciplina: "Fundamentele programarii",
-        prof: "C.d.asociat STANEAN Tudor"
+        sala: "A322",
+        formatie: "211",
+        tip: "Seminar",
+        disciplina: "Algebra",
+        prof: "Drd. Orzan Alexandru"
       },
       {
         ora: "12-14",
         frecventa: " ",
+        sala: "2/I",
+        formatie: "211",
+        tip: "Seminar",
+        disciplina: "Analiza matematica",
+        prof: "Lect. BERINDE Stefan"
+      },
+      {
+        ora: "14-16",
+        frecventa: " ",
         sala: "MOS-S15",
-        formatie: "213",
+        formatie: "211",
         tip: "Seminar",
         disciplina: "Logica computationala",
         prof: "Lect. POP Andreea"
@@ -75,15 +75,6 @@ function App() {
         tip: "Curs",
         disciplina: "Psihologie educationala (facultativ)",
         prof: "C.d.asociat PANA Anca"
-      },
-      {
-        ora: "8-10",
-        frecventa: " ",
-        sala: "A313",
-        formatie: "213",
-        tip: "Seminar",
-        disciplina: "Algebra",
-        prof: "Drd. ARON M"
       },
       {
         ora: "10-12",
@@ -102,6 +93,15 @@ function App() {
         tip: "Curs",
         disciplina: "Programare in C",
         prof: "Asist. BOTA Florentin"
+      },
+      {
+        ora: "16-18",
+        frecventa: " ",
+        sala: "L404",
+        formatie: "211/2",
+        tip: "Laborator",
+        disciplina: "Fundamentele programarii",
+        prof: "Lect. POP Andreea"
       },
       {
         ora: "18-20",
@@ -142,25 +142,25 @@ function App() {
         prof: "Prof. CZIBULA Istvan"
       },
       {
-        ora: "16-18",
+        ora: "14-16",
         frecventa: " ",
-        sala: "L307",
-        formatie: "213/1",
+        sala: "C335",
+        formatie: "211",
+        tip: "Seminar",
+        disciplina: "Fundamentele programarii",
+        prof: "Lect. MIRCEA Ioan Gabriel"
+      },
+      {
+        ora: "18-20",
+        frecventa: " ",
+        sala: "L439",
+        formatie: "211/1",
         tip: "Laborator",
         disciplina: "Arhitectura sistemelor de calcul",
         prof: "Lect. COROIU Adriana"
       }
     ],
     Vineri: [
-      {
-        ora: "10-12",
-        frecventa: " ",
-        sala: "A303",
-        formatie: "213",
-        tip: "Seminar",
-        disciplina: "Fundamentele programarii",
-        prof: "Lect. MIRCEA Ioan Gabriel"
-      },
       {
         ora: "12-14",
         frecventa: " ",
@@ -173,11 +173,11 @@ function App() {
       {
         ora: "12-14",
         frecventa: " ",
-        sala: "MOS-S15",
-        formatie: "213/2",
+        sala: "L001",
+        formatie: "211/1",
         tip: "Laborator",
-        disciplina: "Arhitectura sistemelor de calcul",
-        prof: "Drd. BOTA Daniel"
+        disciplina: "Fundamentele programarii",
+        prof: "Lect. POP Andreea"
       },
       {
         ora: "14-16",

@@ -7,6 +7,7 @@ const fs = require('fs');
 const port = process.env.PORT || 4000
 const app = express()
 app.use(cors());
+
 const getGroups = async(url) => {
   //Returns an array of the groups from the parameter: url
   try{
@@ -15,6 +16,7 @@ const getGroups = async(url) => {
     res = $(`h1:contains(Grupa )`).text().split(/\D/g).filter((el) => {
       return el != ""
     })
+    return res
   }
   catch(error){
     console.error(error)
@@ -67,8 +69,22 @@ app.get("/api/:specializare/:an/:grupa/:semigrupa", async(req, res) => {
   const sentURL = `https://www.cs.ubbcluj.ro/files/orar/${semester}/tabelar/${req.params.specializare}${req.params.an}.html`
   console.log(sentURL)
   tab = await getGroupSchedule(sentURL, req.params.grupa)
-  res.json(tab);
+  res.json(tab)
 });
+
+app.get("/api/groups/:specializare/:an/:grupa/:semigrupa", async(req, res) => {
+  let currDate = new Date()
+  if(currDate.getMonth() >= 2 && currDate.getDay() >= 26)
+    semester = `${currDate.getFullYear() - 1}-2`
+  else
+    semester = `${currDate.getFullYear()}-1`
+  const sentURL = `https://www.cs.ubbcluj.ro/files/orar/${semester}/tabelar/${req.params.specializare}${req.params.an}.html`
+  console.log(sentURL)
+  groups = await getGroups(sentURL)
+  console.log(groups)
+  res.json(groups)
+});
+
 
 app.listen(port, () => {
     console.log(`Server Established and  running on Port ⚡${port}`)

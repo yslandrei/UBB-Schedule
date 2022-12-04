@@ -216,6 +216,7 @@ function App() {
       <Header title="UBB Schedule"/>
       <Selectors onSubmit={onSubmit}/>
       <Courses days={table}/>
+      <footer></footer>
     </>
   );
 }

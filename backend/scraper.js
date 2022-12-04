@@ -23,7 +23,7 @@ const getGroups = async(url) => {
   }
 }
 
-const getGroupSchedule = async(url, group) => {
+const getGroupSchedule = async(url, group, semigroup) => {
   try{
     const response = await axios.get(url)
     const $ = cheerio.load(response.data)
@@ -50,8 +50,11 @@ const getGroupSchedule = async(url, group) => {
         temp["tip"] = args[5]
         temp["disciplina"] = args[6]
         temp["prof"] = args[7]
-
-        tableData[args[0]].push(temp)
+        
+        if(temp["formatie"].search("/") != -1 && temp["formatie"][4] == semigroup)
+          tableData[args[0]].push(temp)
+        else if(temp["formatie"].search("/") == -1)
+          tableData[args[0]].push(temp)
     })})
     return tableData
   }
@@ -68,7 +71,7 @@ app.get("/api/:specializare/:an/:grupa/:semigrupa", async(req, res) => {
     semester = `${currDate.getFullYear()}-1`
   const sentURL = `https://www.cs.ubbcluj.ro/files/orar/${semester}/tabelar/${req.params.specializare}${req.params.an}.html`
   console.log(sentURL)
-  tab = await getGroupSchedule(sentURL, req.params.grupa)
+  tab = await getGroupSchedule(sentURL, req.params.grupa, req.params.semigrupa)
   res.json(tab)
 });
 

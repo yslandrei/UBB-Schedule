@@ -200,14 +200,16 @@ function App() {
     ]
   });
 
+  const prodURL = "https://ubbschedule.netlify.app"
+  const localURL = "http://localhost:4000"
+
   const onSubmit = ({selectedSpec, selectedYear, selectedGroup, selectedSemigroup}) => {
     console.log(selectedSpec, selectedYear, selectedGroup, selectedSemigroup)
-    let selectedURL = `http://localhost:4000/api/${selectedSpec}/${selectedYear}/${selectedGroup}/${selectedSemigroup}`
+    let selectedURL = `${localURL}/api/${selectedSpec}/${selectedYear}/${selectedGroup}/${selectedSemigroup}`
     console.log(selectedURL)
     fetch(selectedURL)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         setTable(data)})
   }
 

@@ -1,12 +1,12 @@
 const axios = require('axios')
-const cheerio = require('cheerio');
+const cheerio = require('cheerio')
 const express = require('express')
-const cors = require('cors');
-require('dotenv').config();
-const fs = require('fs');
+const cors = require('cors')
+require('dotenv').config()
+const fs = require('fs')
 const port = process.env.PORT || 4000
 const app = express()
-app.use(cors());
+app.use(cors())
 
 const getGroups = async(url) => {
   //Returns an array of the groups from the parameter: url
@@ -73,7 +73,7 @@ app.get("/api/:specializare/:an/:grupa/:semigrupa", async(req, res) => {
   console.log(sentURL)
   tab = await getGroupSchedule(sentURL, req.params.grupa, req.params.semigrupa)
   res.json(tab)
-});
+})
 
 app.get("/api/groups/:specializare/:an/:grupa/:semigrupa", async(req, res) => {
   let currDate = new Date()
@@ -82,11 +82,9 @@ app.get("/api/groups/:specializare/:an/:grupa/:semigrupa", async(req, res) => {
   else
     semester = `${currDate.getFullYear()}-1`
   const sentURL = `https://www.cs.ubbcluj.ro/files/orar/${semester}/tabelar/${req.params.specializare}${req.params.an}.html`
-  console.log(sentURL)
   groups = await getGroups(sentURL)
-  console.log(groups)
   res.json(groups)
-});
+})
 
 
 app.listen(port, () => {

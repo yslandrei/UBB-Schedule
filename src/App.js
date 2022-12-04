@@ -1,145 +1,221 @@
 import Header from './components/Header'
 import Courses from './components/Courses'
 import Selectors from './components/Selectors'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import axios from 'axios'
 
 function App() {
-  const [monday, setMonday] = useState([
-    {
-      id: 0,
-      text: 'Laborator: FP',
-      start: '08:00',
-      end: '10:00',
-      room: 'L308',
-      teacher: 'Stanean Tudor',
-      onlyOnOddWeeks: false,
-    },
-    {
-      id: 1,
-      text: 'Seminar: ASC',
-      start: '10:00',
-      end: '12:00',
-      room: 'A312',
-      teacher: 'Sotropa Diana',
-      onlyOnOddWeeks: true,
-    },
-    {
-      id: 2,
-      text: 'Seminar: Analiza',
-      start: '14:00',
-      end: '16:00',
-      teacher: 'Berinde Stefan',
-      onlyOnOddWeeks: false,
-    }
-  ])
+  const [table, setTable] = useState({
+    Ziua: [
+      {
+        ora: "Orele",
+        frecventa: "Frecventa",
+        sala: "Sala",
+        formatie: "Formatia",
+        tip: "Tipul",
+        disciplina: "Disciplina",
+        prof: "Cadrul didactic"
+      }
+    ],
+    Luni: [
+      {
+        ora: "8-10",
+        frecventa: " ",
+        sala: "L308",
+        formatie: "213/1",
+        tip: "Laborator",
+        disciplina: "Fundamentele programarii",
+        prof: "C.d.asociat STANEAN Tudor"
+      },
+      {
+        ora: "10-12",
+        frecventa: "sapt. 1",
+        sala: "A312",
+        formatie: "213",
+        tip: "Seminar",
+        disciplina: "Arhitectura sistemelor de calcul",
+        prof: "Lect. SOTROPA Diana"
+      },
+      {
+        ora: "14-16",
+        frecventa: " ",
+        sala: "pi",
+        formatie: "213",
+        tip: "Seminar",
+        disciplina: "Analiza matematica",
+        prof: "Lect. BERINDE Stefan"
+      }
+    ],
+    Marti: [
+      {
+        ora: "8-10",
+        frecventa: " ",
+        sala: "L339",
+        formatie: "213/2",
+        tip: "Laborator",
+        disciplina: "Fundamentele programarii",
+        prof: "C.d.asociat STANEAN Tudor"
+      },
+      {
+        ora: "12-14",
+        frecventa: " ",
+        sala: "MOS-S15",
+        formatie: "213",
+        tip: "Seminar",
+        disciplina: "Logica computationala",
+        prof: "Lect. POP Andreea"
+      }
+    ],
+    Miercuri: [
+      {
+        ora: "8-10",
+        frecventa: " ",
+        sala: "6/II",
+        formatie: "I1",
+        tip: "Curs",
+        disciplina: "Psihologie educationala (facultativ)",
+        prof: "C.d.asociat PANA Anca"
+      },
+      {
+        ora: "8-10",
+        frecventa: " ",
+        sala: "A313",
+        formatie: "213",
+        tip: "Seminar",
+        disciplina: "Algebra",
+        prof: "Drd. ARON M"
+      },
+      {
+        ora: "10-12",
+        frecventa: " ",
+        sala: "L336",
+        formatie: "I1",
+        tip: "Laborator",
+        disciplina: "Programare in C",
+        prof: "Asist. BOTA Florentin"
+      },
+      {
+        ora: "13-14",
+        frecventa: " ",
+        sala: "C310",
+        formatie: "I1",
+        tip: "Curs",
+        disciplina: "Programare in C",
+        prof: "Asist. BOTA Florentin"
+      },
+      {
+        ora: "18-20",
+        frecventa: " ",
+        sala: "A2",
+        formatie: "I1",
+        tip: "Curs",
+        disciplina: "Arhitectura sistemelor de calcul",
+        prof: "Lect. VANCEA Alexandru"
+      }
+    ],
+    Joi: [
+      {
+        ora: "8-10",
+        frecventa: " ",
+        sala: "A2",
+        formatie: "I1",
+        tip: "Curs",
+        disciplina: "Algebra",
+        prof: "Conf. MODOI Gheorghe"
+      },
+      {
+        ora: "10-12",
+        frecventa: " ",
+        sala: "A2",
+        formatie: "I1",
+        tip: "Curs",
+        disciplina: "Logica computationala",
+        prof: "Lect. POP Andreea"
+      },
+      {
+        ora: "12-14",
+        frecventa: " ",
+        sala: "A2",
+        formatie: "I1",
+        tip: "Curs",
+        disciplina: "Fundamentele programarii",
+        prof: "Prof. CZIBULA Istvan"
+      },
+      {
+        ora: "16-18",
+        frecventa: " ",
+        sala: "L307",
+        formatie: "213/1",
+        tip: "Laborator",
+        disciplina: "Arhitectura sistemelor de calcul",
+        prof: "Lect. COROIU Adriana"
+      }
+    ],
+    Vineri: [
+      {
+        ora: "10-12",
+        frecventa: " ",
+        sala: "A303",
+        formatie: "213",
+        tip: "Seminar",
+        disciplina: "Fundamentele programarii",
+        prof: "Lect. MIRCEA Ioan Gabriel"
+      },
+      {
+        ora: "12-14",
+        frecventa: " ",
+        sala: "A2",
+        formatie: "I1",
+        tip: "Curs",
+        disciplina: "Comunicare si dezvoltare profesionala in informatica",
+        prof: "Prof. MOTOGNA Simona"
+      },
+      {
+        ora: "12-14",
+        frecventa: " ",
+        sala: "MOS-S15",
+        formatie: "213/2",
+        tip: "Laborator",
+        disciplina: "Arhitectura sistemelor de calcul",
+        prof: "Drd. BOTA Daniel"
+      },
+      {
+        ora: "14-16",
+        frecventa: " ",
+        sala: "A2",
+        formatie: "I1",
+        tip: "Curs",
+        disciplina: "Analiza matematica",
+        prof: "Lect. BERINDE Stefan"
+      },
+      {
+        ora: "16-18",
+        frecventa: " ",
+        sala: "2/I",
+        formatie: "I1",
+        tip: "Seminar",
+        disciplina: "Psihologie educationala (facultativ)",
+        prof: "C.d.asociat Secara Eugen"
+      }
+    ]
+  });
 
-  const [tuesday, setTuesday] = useState([
-    {
-      id: 0,
-      text: 'Seminar: Logica',
-      start: '12:00',
-      end: '14:00',
-      room: 'MOS-S15',
-      teacher: 'Pop Andreea',
-      onlyOnOddWeeks: false,
-    },
-  ])
+  const onSubmit = ({selectedSpec, selectedYear, selectedGroup, selectedSemigroup}) => {
+    console.log(selectedSpec, selectedYear, selectedGroup, selectedSemigroup)
+    let selectedURL = `http://localhost:4000/api/${selectedSpec}/${selectedYear}/${selectedGroup}/${selectedSemigroup}`
+    console.log(selectedURL)
+    fetch(selectedURL)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        setTable(data)})
+  }
 
-  const [wednesday, setWednesday] = useState([
-    {
-      id: 0,
-      text: 'Seminar: Algebra',
-      start: '08:00',
-      end: '10:00',
-      room: 'A313',
-      teacher: 'Aron M',
-      onlyOnOddWeeks: false,
-    },
-    {
-      id: 2,
-      text: 'Curs: PC',
-      start: '12:00',
-      end: '14:00',
-      room: 'C310',
-      teacher: 'Bota Florentin',
-      onlyOnOddWeeks: false,
-    },
-    {
-      id: 3,
-      text: 'Curs: ASC',
-      start: '18:00',
-      end: '20:00',
-      room: 'A2',
-      teacher: 'Vancea Alexandru',
-      onlyOnOddWeeks: false,
-    } 
-  ])
-
-  const [thursday, setThursday] = useState([
-    {
-      id: 0,
-      text: 'Curs: Algebra',
-      start: '08:00',
-      end: '10:00',
-      room: 'A2',
-      teacher: 'Modoi Gheorghe',
-      onlyOnOddWeeks: false,
-    },
-    {
-      id: 1,
-      text: 'Curs: Logica',
-      start: '10:00',
-      end: '12:00',
-      room: 'A2',
-      teacher: 'Pop Andreea',
-      onlyOnOddWeeks: false,
-    },
-    {
-      id: 2,
-      text: 'Curs: FP',
-      start: '12:00',
-      end: '14:00',
-      room: 'A2',
-      teacher: 'Czibula Istvan',
-      onlyOnOddWeeks: false,
-    },
-    {
-      id: 3,
-      text: 'Laborator: ASC',
-      start: '16:00',
-      end: '18:00',
-      room: 'L307',
-      teacher: 'Coroiu Adriana',
-      onlyOnOddWeeks: false,
-    }
-  ])
-
-  const [friday, setFriday] = useState([
-    {
-      id: 0,
-      text: 'Seminar: FP',
-      start: '10:00',
-      end: '12:00',
-      room: 'A303',
-      teacher: "Gabi Mircea",
-      onlyOnOddWeeks: false,
-    },
-    {
-      id: 1,
-      text: 'Curs: Analiza',
-      start: '14:00',
-      end: '16:00',
-      room: 'A2',
-      teacher: 'Berinde Stefan',
-      onlyOnOddWeeks: false,
-    } 
-  ])
-
-  return (
+  return ( 
     <>
       <Header title="UBB Schedule"/>
-      <Selectors/>
-      <Courses days={[monday, tuesday, wednesday, thursday, friday]}/>
+      <Selectors onSubmit={onSubmit}/>
+      <Courses days={table}/>
     </>
   );
 }

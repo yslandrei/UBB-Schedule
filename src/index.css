@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
 * {
   box-sizing: border-box;
@@ -32,6 +34,10 @@ select {
 }
 
 .flex-child-selector {
+  margin-right: 25px;
+}
+
+.flex-child-selector:first-child {
   margin-left: 40px;
 }
 
@@ -59,6 +65,10 @@ select {
 .title {
   text-align: center;
   color: #fff;
+}
+
+h4 {
+  font-size: 15px;
 }
 
 header {
@@ -93,31 +103,36 @@ header {
 }
 
 .course {
-  display: flex;
+  display: flex; 
   min-height: 100px;
+  font-size: 13px;
 }
 
-.course-child {
+.time {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13.5px
+}
+
+.course-child:nth-child(2) {
   background: #f4f4f4;
-  width: 100%;
+  width: 75%;
   margin: 2px;
   padding: 10px 20px;
   border-radius: 0px 5px 5px 0px;
 }
 
 .course-child:first-child {
-  text-align: center;
-  max-width: 20%;
-  padding: 25px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  background: #f4f4f4;
+  width: 20%;
   border-radius: 5px 0px 0px 5px;
 }
 
 .course.reminder {
   border-left: 5px solid green;
-}
-
-.course p {
-  font-size: 13px;
 }
 
 .add-form {

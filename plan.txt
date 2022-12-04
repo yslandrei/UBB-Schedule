@@ -1,0 +1,27 @@
+/// BACKEND ///
+
+Probleme: Nu stiu cum sa afisez in selectoare grupele corecte, deoarece ele difere de la an la an
+          Cel mai probabil o sa fac web scrapeul manual (nu automat cand cate-un utilizator cere)
+          Asadar voi stii grupele. Sauuu voi face web scrapeul asta strict pt grupe iar mai apoi
+          voi face web scrape de fiecare data cand utilizatorul apasa submit, nush exact
+
+1. Genereaza Linkul la care se afla tabelele de la TOATE grupele din acea specializare si acel an:
+
+https://www.cs.ubbcluj.ro/files/orar/${anCurent}-${semesteruCurent}/tabelar/${specializare}${an}.html
+
+anCurent, semestruCurent o sa le fac probabil cu getCurrentDate sau cv
+
+specializare / an o sa le primesc de la utilizator
+
+specializari (aproximativ toate, mai sunt masteruri si doctorate):
+I, IE, IM, IG, 
+MI, MIE, MIG, MIM, 
+M, ME, MM, MG
+
+an: 1, 2, 3
+
+2. Web Scraping (cu axios + cheerio cel mai probabil)
+
+
+
+

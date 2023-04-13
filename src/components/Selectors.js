@@ -36,13 +36,18 @@ const Selectors = ({ onSubmit }) => {
           name="spec" 
           id="spec" 
           onChange={(e) => setSelectedSpec(e.target.value)}>
-          <option value="I">Informatica-Romana</option>
-          <option value="IE">Informatica-Engleza</option>
-          <option value="IM">Informatica-Maghiara</option>
-          <option value="IG">Informatica-Germana</option>
+          <option value="I">Informatica Romana</option>
+          <option value="IE">Informatica Engleza</option>
+          <option value="IM">Informatica Maghiara</option>
+          <option value="IG">Informatica Germana</option>
+          <option value="MI">Mate Info Romana</option>
+          <option value="MIE">Mate Info Engleza</option>
+          <option value="MIM">Mate Info Maghiara</option>
+          <option value="M">Matematica Romana</option>
+          <option value="MM">Matematica Maghiara</option>
         </select>
       </div>
-      
+
       <div className="flex-child-selector">
         <label for="year">An: </label>
         <select 
